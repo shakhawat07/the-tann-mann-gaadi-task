@@ -41,7 +41,7 @@ const Register = () => {
                             <input type="text" onBlur={handleOnBlur} className="form-control" id="inputName" placeholder="Enter Username" name="name" required />
 
                             {/* email  */}
-                            <input onBlur={handleOnBlur} type="email" className="form-control" id="inputEmail" placeholder="Enter email" name="email" required />
+                            <input onBlur={handleOnBlur} type="email" className="form-control" id="inputEmail" placeholder="Enter Email" name="email" required />
 
                             {/* password  */}
                             <input type="password" onBlur={handleOnBlur} className="form-control" id="inputPassword" placeholder="Enter Password" name="password" autoComplete="on" required />

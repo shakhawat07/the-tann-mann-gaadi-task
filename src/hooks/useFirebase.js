@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, signInWithPopup, updateProfile, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, updateProfile, signOut } from "firebase/auth";
 import initializeAuthentication from '../FireBase/firebase.init';
 
 initializeAuthentication();
@@ -10,7 +10,7 @@ const useFirebase = () => {
     const [authError, setAuthError] = useState('');
 
     const auth = getAuth();
-    const googleProvider = new GoogleAuthProvider();
+    // const googleProvider = new GoogleAuthProvider();
 
     const registerUser = (email, password, name, phone, history) => {
         setIsLoading(true);
@@ -34,22 +34,22 @@ const useFirebase = () => {
             .finally(() => setIsLoading(false));
     }
 
-    // const loginUser = (email, password, location, history) => {
-    //     setIsLoading(true);
-    //     signInWithEmailAndPassword(auth, email, password)
-    //         .then(result => {
-    //             alert('Login successfully!');
-    //             const destination = location?.state?.from || '/';
-    //             history.replace(destination);
-    //             setAuthError('');
-    //         })
-    //         .catch((error) => {
-    //             setAuthError(error.message);
-    //             alert('Mismatched email or password. Login Error ' + { authError });
-    //             window.location.reload(false);
-    //         })
-    //         .finally(() => setIsLoading(false));
-    // }
+    const loginUser = (email, password, location, history) => {
+        setIsLoading(true);
+        signInWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                alert('Login successfully!');
+                // const destination = location?.state?.from || '/';
+                history.replace('/register');
+                setAuthError('');
+            })
+            .catch((error) => {
+                setAuthError(error.message);
+                alert('Mismatched email or password. Login Error ' + { authError });
+                window.location.reload(false);
+            })
+            .finally(() => setIsLoading(false));
+    }
 
     // observer user state
     useEffect(() => {
@@ -81,7 +81,7 @@ const useFirebase = () => {
         isLoading,
         authError,
         registerUser,
-        // loginUser,
+        loginUser,
         logout,
     }
 }
