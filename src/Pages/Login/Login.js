@@ -39,10 +39,10 @@ const Login = () => {
 
                             <div className="row mb-3 g-4 w-75 mx-auto my-3">
                                 {/* email  */}
-                                <input type="email" onChange={handleOnChange} className="form-control zoom" id="inputEmail" placeholder="Enter Email" name="email" required />
+                                <input type="email" onChange={handleOnChange} className="form-control zoom" id="inputEmail" placeholder="Enter Email" name="email" maxLength={62} required />
 
                                 {/* password  */}
-                                <input type="password" onChange={handleOnChange} className="form-control zoom" id="inputPassword3" placeholder="Enter Password" name="password" autoComplete="on" required />
+                                <input type="password" onChange={handleOnChange} className="form-control zoom" id="inputPassword3" placeholder="Enter Password" name="password" maxLength={40} autoComplete="on" required />
                             </div>
 
                             {/* submit button  */}

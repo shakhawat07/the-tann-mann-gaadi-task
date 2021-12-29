@@ -7,6 +7,7 @@ import Register from './Pages/Register/Register';
 import Courses from './Pages/Courses/Courses';
 import CourseDetails from './Pages/CourseDetails/CourseDetails';
 import Navigation from './Pages/Navigation/Navigation';
+import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 
 function App() {
   return (
@@ -19,12 +20,12 @@ function App() {
               <Login></Login>
             </Route>
 
-            <Route path="/courses">
+            <PrivateRoute path="/courses">
               <Courses></Courses>
-            </Route>
-            <Route path="/course/:courseId">
+            </PrivateRoute>
+            <PrivateRoute path="/course/:courseId">
               <CourseDetails></CourseDetails>
-            </Route>
+            </PrivateRoute>
 
 
             {/* <PrivateRoute path="/dashboard">

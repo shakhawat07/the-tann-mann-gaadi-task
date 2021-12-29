@@ -7,7 +7,7 @@ import './Navigation.css'
 
 const Navigation = () => {
     const { user, logout } = useAuth();
-    console.log(user);
+    // console.log(user);
     // NavLink activeStyle 
     const activeStyle = {
         fontWeight: "bold",
@@ -28,10 +28,13 @@ const Navigation = () => {
                             activeStyle={activeStyle}
                             to="/">Home
                         </NavLink> */}
-                        <NavLink className="nav"
-                            activeStyle={activeStyle}
-                            to="/courses">Courses
-                        </NavLink>
+                        {user.email &&
+                            <NavLink className="nav"
+                                activeStyle={activeStyle}
+                                to="/courses">Courses
+                            </NavLink>
+                        }
+
                         {/* <NavLink className="nav"
                             activeStyle={activeStyle}
                             to="/about">About
