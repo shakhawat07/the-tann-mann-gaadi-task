@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, updateProfile, signOut } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, onAuthStateChanged, GoogleAuthProvider, updateProfile, signOut, sendEmailVerification } from "firebase/auth";
 import initializeAuthentication from '../FireBase/firebase.init';
 
 initializeAuthentication();
@@ -17,19 +17,25 @@ const useFirebase = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then(result => {
                 setAuthError('');
-                const newUser = { email, password, displayName: name, phone };
+                alert('User created successfully!');
+                verifyEmail();
+                const newUser = { email, password, displayName: name, phoneNumber: phone };
                 setUser(newUser);
                 // send name to firebase after creation
                 updateProfile(auth.currentUser, {
-                    displayName: name
+                    displayName: name,
+                    phoneNumber: phone,
                 }).then(() => {
                 }).catch((error) => {
+                    setAuthError(error.message);
+                    alert('User already exist' + { authError });
                 });
-                history.replace('/');
+                history.replace('/courses');
             })
             .catch((error) => {
                 setAuthError(error.message);
-                console.log(error);
+                alert('User already exist');
+                // console.log(error);
             })
             .finally(() => setIsLoading(false));
     }
@@ -45,8 +51,8 @@ const useFirebase = () => {
             })
             .catch((error) => {
                 setAuthError(error.message);
-                alert('Mismatched email or password. Login Error ' + { authError });
-                window.location.reload(false);
+                alert('Mismatched email/password or user does not exist!');
+                // window.location.reload(false);
             })
             .finally(() => setIsLoading(false));
     }
@@ -63,13 +69,22 @@ const useFirebase = () => {
             setIsLoading(false);
         });
         return () => unsubscribed;
-    }, [])
+    }, [auth]);
+
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(result => {
+                // alert('Email already used!');
+                console.log(result);
+            })
+    }
 
     // logout 
     const logout = () => {
         setIsLoading(true);
         signOut(auth).then(() => {
             // Sign-out successful.
+            console.log('Logged out');
         }).catch((error) => {
             // An error happened.
         })

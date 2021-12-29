@@ -7,7 +7,7 @@ import './Navigation.css'
 
 const Navigation = () => {
     const { user, logout } = useAuth();
-
+    console.log(user);
     // NavLink activeStyle 
     const activeStyle = {
         fontWeight: "bold",
@@ -46,9 +46,9 @@ const Navigation = () => {
                         </NavLink>
 
                         {/* showing userName after login */}
-                        {/* <span className="text-white mb-1">{user.name}</span> */}
+                        <span className="text-white mb-1">{user.displayName}</span>
                         {/* log out button show */}
-                        {/* {user?.email && <button className="ms-3 text-white btn btn-black border border-white" onClick={logout}>logout</button>} */}
+                        {user.email && <button className="ms-3 text-white btn btn-black border border-white" onClick={logout}>logout</button>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

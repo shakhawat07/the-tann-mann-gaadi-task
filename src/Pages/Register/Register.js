@@ -21,12 +21,6 @@ const Register = () => {
     const handleLoginSubmit = e => {
         registerUser(loginData.email, loginData.password, loginData.name, loginData.phone, history);
         e.preventDefault();
-        if (authError === '') {
-            alert('User Created successfully!');
-        }
-        else {
-            alert('Registration Failed. Error ' + { authError });
-        }
     }
     return (
         <div className="container-fluid">
@@ -45,23 +39,23 @@ const Register = () => {
                             <div className="row mb-3 g-4 w-75 mx-auto my-3">
 
                                 {/* user name  */}
-                                <input type="text" onBlur={handleOnBlur} className="form-control" id="inputName" placeholder="Enter Username" name="name" required />
+                                <input type="text" onBlur={handleOnBlur} className="form-control zoom" id="inputName" placeholder="Enter Username" name="name" maxLength={80} required />
 
                                 {/* email  */}
-                                <input onBlur={handleOnBlur} type="email" className="form-control" id="inputEmail" placeholder="Enter Email" name="email" required />
+                                <input onBlur={handleOnBlur} type="email" className="form-control zoom" id="inputEmail" placeholder="Enter Email" name="email" maxLength={62} required />
 
                                 {/* password  */}
-                                <input type="password" onBlur={handleOnBlur} className="form-control" id="inputPassword" placeholder="Enter Password" name="password" autoComplete="on" required />
+                                <input type="password" onBlur={handleOnBlur} className="form-control zoom" id="inputPassword" placeholder="Enter Password" name="password" maxLength={40} autoComplete="on" required />
 
                                 {/* phone  */}
-                                <input type="text" onBlur={handleOnBlur} className="form-control" id="inputPhone" placeholder="Enter Phone" name="phone" autoComplete="on" required />
+                                <input type="text" onBlur={handleOnBlur} className="form-control zoom" id="inputPhone" placeholder="Enter Phone" name="phone" maxLength={16} autoComplete="on" required />
                             </div>
 
 
                             {/* submit button  */}
                             {/* <div className="row mb-2 text-danger">{error}</div> */}
-                            <div className="d-flex justify-content-center">
-                                <button type="submit" className="btn btn-primary rounded">Register</button>
+                            <div className="d-flex justify-content-center mt-4">
+                                <button type="submit" className="btn btn-primary rounded zoom">Register</button>
                             </div>
                             <br />
                             <NavLink
@@ -73,10 +67,10 @@ const Register = () => {
                             {/* <div className="d-flex justify-content-center mt-2">
                         <button className="btn btn-primary" onClick={handleGoogleSignIn}>Google Sign In</button>
                     </div> */}
-                        </form>}
+                        </form>
+                    }
                     {isLoading && <Spinner animation="border" variant="danger" />}
-                    {/* {user?.email && alert('User Created successfully!')}
-                {authError && alert({ authError })} */}
+
                 </div>
 
             </div>

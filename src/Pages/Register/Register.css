@@ -1,3 +1,6 @@
 .form-container{
     background-color:#e9ecef;
 }
+.zoom:hover{
+    transform: scale(1.05);
+}
