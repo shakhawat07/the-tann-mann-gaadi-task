@@ -12,9 +12,9 @@ const Courses = () => {
     // console.log(videos);
     return (
         <div className="container-fluid">
-            <h1 className="text-center mt-5 fw-bold">Courses <span className="text-primary">Videos</span></h1>
+            <h1 className="text-center mt-3 fw-bold text-dark">Course Tutorials</h1>
             <hr />
-            <div className="row p-5">
+            <div className="row m-4">
                 {
                     videos.map(video =>
                         <Course

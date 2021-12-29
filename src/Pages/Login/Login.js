@@ -25,35 +25,43 @@ const Login = () => {
     }
     return (
         <div className="container-fluid">
-            <div className="login-container m-5">
-                <h2 className="text-primary fw-bold mb-4 text-center">Please Login</h2>
-                <form onSubmit={handleLoginSubmit}>
-                    <div className="row mb-3 g-4">
-                        {/* email  */}
-                        <input type="email" onChange={handleOnChange} className="form-control" id="inputEmail" placeholder="Enter Email" name="email" required />
+            <div className="login-container row">
+                <div className="col-lg-6 col-md-12 col-sm-12 col-12 d-flex flex-column justify-content-center align-items-center m-0 p-0 d-none d-lg-block">
 
-                        {/* password  */}
-                        <input type="password" onChange={handleOnChange} className="form-control" id="inputPassword3" placeholder="Enter Password" name="password" autoComplete="on" required />
-                    </div>
+                    <img className="img-fluid" style={{ width: '700px', height: '600px', overflow: 'hidden' }} src="https://image.freepik.com/free-vector/cyber-data-security-online-concept-illustration-internet-security-information-privacy-protection_1150-37330.jpg" alt="" />
 
-                    <br />
-                    {/* submit button  */}
-                    <div className="d-flex justify-content-center">
-                        <button type="submit" className="btn btn-danger rounded">Login</button>
-                    </div>
-                    <br />
-                    <NavLink
-                        style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center' }}
-                        to="/register">
-                        New User? Please Register
-                    </NavLink>
+                </div>
+                <div className="col-lg-6 col-md-12 col-sm-12 col-12 d-flex flex-column justify-content-center align-items-center m-0 p-0 form-container">
+                    <h1 className="text-dark fw-bolder mb-2 mt-4 text-center">Login</h1>
+                    <form onSubmit={handleLoginSubmit}>
+                        <div className="row mb-3 g-4 w-75 mx-auto my-3">
+                            {/* email  */}
+                            <input type="email" onChange={handleOnChange} className="form-control" id="inputEmail" placeholder="Enter Email" name="email" required />
 
-                    {/* google sign in button  */}
-                    {/* <div className="d-flex justify-content-center mt-2">
+                            {/* password  */}
+                            <input type="password" onChange={handleOnChange} className="form-control" id="inputPassword3" placeholder="Enter Password" name="password" autoComplete="on" required />
+                        </div>
+
+                        <br />
+                        {/* submit button  */}
+                        <div className="d-flex justify-content-center">
+                            <button type="submit" className="btn btn-primary rounded">Login</button>
+                        </div>
+                        <br />
+                        <NavLink
+                            style={{ textDecoration: 'none', display: 'flex', justifyContent: 'center', fontWeight: 'bolder' }}
+                            to="/register">
+                            New User? Please Register
+                        </NavLink>
+
+                        {/* google sign in button  */}
+                        {/* <div className="d-flex justify-content-center mt-2">
                         <button className="btn btn-primary" onClick={handleGoogleSignIn}>Google Sign In</button>
                     </div> */}
-                </form>
-                {isLoading && <Spinner animation="border" variant="danger" />}
+                    </form>
+                    {isLoading && <Spinner animation="border" variant="danger" />}
+                </div>
+
             </div>
         </div>
     );

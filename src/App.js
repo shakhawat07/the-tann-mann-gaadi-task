@@ -6,13 +6,14 @@ import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import Courses from './Pages/Courses/Courses';
 import CourseDetails from './Pages/CourseDetails/CourseDetails';
+import Navigation from './Pages/Navigation/Navigation';
 
 function App() {
   return (
     <div>
       <AuthProvider>
         <Router>
-          {/* <Navigation></Navigation> */}
+          <Navigation></Navigation>
           <Switch>
             <Route exact path="/">
               <Login></Login>
