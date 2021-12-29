@@ -40,7 +40,7 @@ const useFirebase = () => {
             .then(result => {
                 alert('Login successfully!');
                 // const destination = location?.state?.from || '/';
-                history.replace('/register');
+                history.replace('/courses');
                 setAuthError('');
             })
             .catch((error) => {
