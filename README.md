@@ -1,5 +1,5 @@
 # ProgramX Courses
-Live site project link: [Bicycle Emporium]( https://the-tann-mann-gaadi-task.web.app/)
+Live site project link: [ProgramX Courses]( https://the-tann-mann-gaadi-task.web.app/)
 
 ### Project Overview:
 * Users must log in to access the video tutorials. 

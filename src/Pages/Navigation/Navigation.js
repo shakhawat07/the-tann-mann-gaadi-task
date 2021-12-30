@@ -24,10 +24,7 @@ const Navigation = () => {
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="d-flex align-items-end justify-content-end ms-auto">
-                        {/* <NavLink className="nav"
-                            activeStyle={activeStyle}
-                            to="/">Home
-                        </NavLink> */}
+
                         {user.email &&
                             <NavLink className="nav"
                                 activeStyle={activeStyle}
@@ -35,10 +32,6 @@ const Navigation = () => {
                             </NavLink>
                         }
 
-                        {/* <NavLink className="nav"
-                            activeStyle={activeStyle}
-                            to="/about">About
-                        </NavLink> */}
                         <NavLink className="nav"
                             activeStyle={activeStyle}
                             to="/login">Login
