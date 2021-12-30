@@ -8,7 +8,7 @@ import useAuth from '../../hooks/useAuth';
 const Register = () => {
     const [loginData, setLoginData] = useState({});
     const history = useHistory();
-    const { registerUser, isLoading, authError } = useAuth();
+    const { registerUser, isLoading } = useAuth();
 
     const handleOnBlur = e => {
         const field = e.target.name;

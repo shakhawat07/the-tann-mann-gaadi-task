@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import './Course.css';
 
 const Course = ({ video }) => {
-    const { id, name, description, src, img } = video;
+    const { id, name, img } = video;
     const history = useHistory();
     // console.log(video);
 
