@@ -6,7 +6,7 @@ import './Login.css';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { loginUser, isLoading } = useAuth();
+    const { loginUser, isLoading, signInUsingGoogle, setUser } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -23,6 +23,14 @@ const Login = () => {
         e.preventDefault();
 
     }
+    const handleGoogleSignIn = () => {
+        signInUsingGoogle()
+            .then(result => {
+                setUser(result.user);
+                // history.push('/courses');
+                // history.replace('/courses');
+            })
+    };
     return (
         <div className="container-fluid">
             <div className="login-container row">
@@ -57,9 +65,9 @@ const Login = () => {
                             </NavLink>
 
                             {/* google sign in button  */}
-                            {/* <div className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-primary" onClick={handleGoogleSignIn}>Google Sign In</button>
-                    </div> */}
+                            <div className="d-flex justify-content-center mt-2">
+                                <button className="btn btn-danger" onClick={handleGoogleSignIn}>Google Sign In</button>
+                            </div>
                         </form>
                     }
                     {isLoading && <Spinner animation="border" variant="danger" />}

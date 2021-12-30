@@ -8,7 +8,7 @@ import useAuth from '../../hooks/useAuth';
 const Register = () => {
     const [loginData, setLoginData] = useState({});
     const history = useHistory();
-    const { registerUser, isLoading } = useAuth();
+    const { registerUser, isLoading, signInUsingGoogle, setUser } = useAuth();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -21,7 +21,16 @@ const Register = () => {
     const handleLoginSubmit = e => {
         registerUser(loginData.email, loginData.password, loginData.name, loginData.phone, history);
         e.preventDefault();
-    }
+    };
+
+    const handleGoogleSignIn = () => {
+        signInUsingGoogle()
+            .then(result => {
+                setUser(result.user);
+                // history.push('/courses');
+                // history.replace('/courses');
+            })
+    };
     return (
         <div className="container-fluid">
             <div className="login-container row">
@@ -64,9 +73,9 @@ const Register = () => {
                                 Already Registered? Please Login
                             </NavLink>
                             {/* google sign in button  */}
-                            {/* <div className="d-flex justify-content-center mt-2">
-                        <button className="btn btn-primary" onClick={handleGoogleSignIn}>Google Sign In</button>
-                    </div> */}
+                            <div className="d-flex justify-content-center mt-2">
+                                <button className="btn btn-danger" onClick={handleGoogleSignIn}>Google Sign In</button>
+                            </div>
                         </form>
                     }
                     {isLoading && <Spinner animation="border" variant="danger" />}
