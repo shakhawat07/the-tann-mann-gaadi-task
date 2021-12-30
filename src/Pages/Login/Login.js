@@ -6,7 +6,7 @@ import './Login.css';
 
 const Login = () => {
     const [loginData, setLoginData] = useState({});
-    const { loginUser, isLoading, signInUsingGoogle, setUser } = useAuth();
+    const { loginUser, isLoading, signInUsingGoogle, signInUsingFacebook, setUser } = useAuth();
 
     const location = useLocation();
     const history = useHistory();
@@ -24,11 +24,21 @@ const Login = () => {
 
     }
     const handleGoogleSignIn = () => {
-        signInUsingGoogle()
+        signInUsingGoogle(history)
             .then(result => {
                 setUser(result.user);
+                alert('Login successfully!');
+                history.replace('/courses');
+            })
+    };
+
+    const handleFacebookSignIn = () => {
+        signInUsingFacebook(history)
+            .then(result => {
+                setUser(result.user);
+                alert('Login successfully!');
                 // history.push('/courses');
-                // history.replace('/courses');
+                history.replace('/courses');
             })
     };
     return (
@@ -63,11 +73,16 @@ const Login = () => {
                                 to="/register">
                                 New User? Please Register
                             </NavLink>
-
+                            <br />
                             {/* google sign in button  */}
                             <div className="d-flex justify-content-center mt-2">
-                                <button className="btn btn-danger" onClick={handleGoogleSignIn}>Google Sign In</button>
+                                <button className="btn btn-danger sign-in-google" onClick={handleGoogleSignIn}>Google Sign In</button>
                             </div>
+                            {/* facebook sign in button  */}
+                            <div className="d-flex justify-content-center mt-2">
+                                <button className="btn btn-primary sign-in-facebook" onClick={handleFacebookSignIn}>Facebook Sign In</button>
+                            </div>
+                            <br />
                         </form>
                     }
                     {isLoading && <Spinner animation="border" variant="danger" />}

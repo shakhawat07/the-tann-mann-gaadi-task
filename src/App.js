@@ -8,6 +8,7 @@ import Courses from './Pages/Courses/Courses';
 import CourseDetails from './Pages/CourseDetails/CourseDetails';
 import Navigation from './Pages/Navigation/Navigation';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
+import NotFound from './Pages/NotFound/NotFound';
 
 function App() {
   return (
@@ -38,9 +39,9 @@ function App() {
             <Route path="/register">
               <Register></Register>
             </Route>
-            {/* <Route path="*">
+            <Route path="*">
               <NotFound></NotFound>
-            </Route> */}
+            </Route>
           </Switch>
         </Router>
         {/* <Footer></Footer> */}

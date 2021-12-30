@@ -8,7 +8,7 @@ import useAuth from '../../hooks/useAuth';
 const Register = () => {
     const [loginData, setLoginData] = useState({});
     const history = useHistory();
-    const { registerUser, isLoading, signInUsingGoogle, setUser } = useAuth();
+    const { registerUser, isLoading, signInUsingGoogle, signInUsingFacebook, setUser } = useAuth();
 
     const handleOnBlur = e => {
         const field = e.target.name;
@@ -24,11 +24,20 @@ const Register = () => {
     };
 
     const handleGoogleSignIn = () => {
-        signInUsingGoogle()
+        signInUsingGoogle(history)
             .then(result => {
                 setUser(result.user);
-                // history.push('/courses');
-                // history.replace('/courses');
+                alert('Login successfully!');
+                history.replace('/courses');
+            })
+    };
+
+    const handleFacebookSignIn = () => {
+        signInUsingFacebook(history)
+            .then(result => {
+                setUser(result.user);
+                alert('Login successfully!');
+                history.replace('/courses');
             })
     };
     return (
@@ -72,10 +81,16 @@ const Register = () => {
                                 to="/login">
                                 Already Registered? Please Login
                             </NavLink>
+                            <br />
                             {/* google sign in button  */}
                             <div className="d-flex justify-content-center mt-2">
-                                <button className="btn btn-danger" onClick={handleGoogleSignIn}>Google Sign In</button>
+                                <button className="btn btn-danger sign-in-google" onClick={handleGoogleSignIn}>Google Sign In</button>
                             </div>
+                            {/* facebook sign in button  */}
+                            <div className="d-flex justify-content-center mt-2">
+                                <button className="btn btn-primary sign-in-facebook" onClick={handleFacebookSignIn}>Facebook Sign In</button>
+                            </div>
+                            <br />
                         </form>
                     }
                     {isLoading && <Spinner animation="border" variant="danger" />}

@@ -49,9 +49,9 @@ const Navigation = () => {
                         </NavLink>
 
                         {/* showing userName after login */}
-                        <span className="text-white mb-1">{user.displayName}</span>
+                        <span className="text-white me-4">{user.displayName}</span>
                         {/* log out button show */}
-                        {user.email && <button className="ms-3 text-white btn btn-black border border-white" onClick={logout}>logout</button>}
+                        {user.email && <button className="ms-3 text-white btn btn-black border border-white me-4 mt-2" onClick={logout}>logout</button>}
                     </Nav>
                 </Navbar.Collapse>
             </Container>

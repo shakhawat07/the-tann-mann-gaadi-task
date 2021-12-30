@@ -4,3 +4,11 @@
 .zoom:hover{
     transform: scale(1.1);
 }
+.sign-in-google{
+    width: 200px;
+    background-color: #ea4335;
+}
+.sign-in-facebook{
+    width: 200px;
+    background-color: #129af6;
+}
