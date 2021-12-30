@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { Spinner } from 'react-bootstrap';
 import { NavLink, useLocation, useHistory } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons"
 import './Login.css';
 
 const Login = () => {
@@ -37,7 +39,6 @@ const Login = () => {
             .then(result => {
                 setUser(result.user);
                 alert('Login successfully!');
-                // history.push('/courses');
                 history.replace('/courses');
             })
     };
@@ -76,11 +77,11 @@ const Login = () => {
                             <br />
                             {/* google sign in button  */}
                             <div className="d-flex justify-content-center mt-2">
-                                <button className="btn btn-danger sign-in-google" onClick={handleGoogleSignIn}>Google Sign In</button>
+                                <button className="btn btn-danger sign-in-google" onClick={handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} /> Google Sign In</button>
                             </div>
                             {/* facebook sign in button  */}
                             <div className="d-flex justify-content-center mt-2">
-                                <button className="btn btn-primary sign-in-facebook" onClick={handleFacebookSignIn}>Facebook Sign In</button>
+                                <button className="btn btn-primary sign-in-facebook" onClick={handleFacebookSignIn}><FontAwesomeIcon icon={faFacebook} /> Facebook Sign In</button>
                             </div>
                             <br />
                         </form>

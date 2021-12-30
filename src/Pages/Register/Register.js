@@ -4,6 +4,8 @@ import { Spinner } from 'react-bootstrap';
 import { useHistory } from 'react-router';
 import { NavLink } from 'react-router-dom';
 import useAuth from '../../hooks/useAuth';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faGoogle, faFacebook } from "@fortawesome/free-brands-svg-icons"
 
 const Register = () => {
     const [loginData, setLoginData] = useState({});
@@ -84,11 +86,11 @@ const Register = () => {
                             <br />
                             {/* google sign in button  */}
                             <div className="d-flex justify-content-center mt-2">
-                                <button className="btn btn-danger sign-in-google" onClick={handleGoogleSignIn}>Google Sign In</button>
+                                <button className="btn btn-danger sign-in-google" onClick={handleGoogleSignIn}><FontAwesomeIcon icon={faGoogle} /> Google Sign In</button>
                             </div>
                             {/* facebook sign in button  */}
                             <div className="d-flex justify-content-center mt-2">
-                                <button className="btn btn-primary sign-in-facebook" onClick={handleFacebookSignIn}>Facebook Sign In</button>
+                                <button className="btn btn-primary sign-in-facebook" onClick={handleFacebookSignIn}><FontAwesomeIcon icon={faFacebook} /> Facebook Sign In</button>
                             </div>
                             <br />
                         </form>

@@ -9,6 +9,7 @@ import CourseDetails from './Pages/CourseDetails/CourseDetails';
 import Navigation from './Pages/Navigation/Navigation';
 import PrivateRoute from './Pages/PrivateRoute/PrivateRoute';
 import NotFound from './Pages/NotFound/NotFound';
+import Footer from './Pages/Footer/Footer';
 
 function App() {
   return (
@@ -28,11 +29,6 @@ function App() {
               <CourseDetails></CourseDetails>
             </PrivateRoute>
 
-
-            {/* <PrivateRoute path="/dashboard">
-              <Dashboard></Dashboard>
-            </PrivateRoute> */}
-
             <Route path="/login">
               <Login></Login>
             </Route>
@@ -44,7 +40,7 @@ function App() {
             </Route>
           </Switch>
         </Router>
-        {/* <Footer></Footer> */}
+        <Footer></Footer>
       </AuthProvider>
     </div>
   );
